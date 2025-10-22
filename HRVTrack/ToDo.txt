@@ -1,0 +1,72 @@
+﻿Aby przyciski po lewej stronie decydowały o tym, co jest wyświetlane po prawej stronie okna, najlepszym podejściem w WPF jest użycie kontenera ContentControl lub Frame, który dynamicznie wyświetla różne widoki (np. UserControl) w odpowiedzi na kliknięcia przycisków.
+✅ Podejście: ContentControl + UserControl
+1. Utwórz widoki jako osobne UserControl
+Przykład: HomeView.xaml, MeasurementsView.xaml, StatsView.xaml, SettingsView.xaml
+<!-- HomeView.xaml -->
+<UserControl x:Class="HRVTrack.Views.HomeView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Grid Background="#EFEFEF">
+        <TextBlock Text="Strona główna" FontSize="24" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+    </Grid>
+</UserControl>
+
+
+2. W MainWindow.xaml dodaj ContentControl po prawej stronie
+<Grid>
+    <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="0.30*"/>
+        <ColumnDefinition Width="0.70*"/>
+    </Grid.ColumnDefinitions>
+
+    <!-- Lewy panel z przyciskami -->
+    <StackPanel Grid.Column="0" Background="#242323">
+        <Button Content="Strona główna" Click="Home_Click" Style="{StaticResource RoundedButtonStyle}" Margin="10"/>
+        <Button Content="Pomiary" Click="Measurements_Click" Style="{StaticResource RoundedButtonStyle}" Margin="10"/>
+        <Button Content="Statystyki" Click="Stats_Click" Style="{StaticResource RoundedButtonStyle}" Margin="10"/>
+        <Button Content="Ustawienia" Click="Settings_Click" Style="{StaticResource RoundedButtonStyle}" Margin="10"/>
+    </StackPanel>
+
+    <!-- Prawa część z dynamiczną zawartością -->
+    <ContentControl x:Name="MainContent" Grid.Column="1"/>
+</Grid>
+
+
+3. W MainWindow.xaml.cs załaduj odpowiedni widok po kliknięciu
+using HRVTrack.Views;
+
+public partial class MainWindow : Window
+{
+    public MainWindow()
+    {
+        InitializeComponent();
+        MainContent.Content = new HomeView(); // domyślny widok
+    }
+
+    private void Home_Click(object sender, RoutedEventArgs e)
+    {
+        MainContent.Content = new HomeView();
+    }
+
+    private void Measurements_Click(object sender, RoutedEventArgs e)
+    {
+        MainContent.Content = new MeasurementsView();
+    }
+
+    private void Stats_Click(object sender, RoutedEventArgs e)
+    {
+        MainContent.Content = new StatsView();
+    }
+
+    private void Settings_Click(object sender, RoutedEventArgs e)
+    {
+        MainContent.Content = new SettingsView();
+    }
+}
+
+
+
+🧠 Alternatywa: Frame + Page
+Jeśli chcesz mieć nawigację z historią (jak przeglądarka), możesz użyć Frame i Page zamiast ContentControl i UserControl.
+
+Chcesz, żebym wygenerował przykładowe UserControl dla każdego widoku albo pokazał jak to zrobić z MVVM?
