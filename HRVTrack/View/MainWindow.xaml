@@ -1,38 +1,44 @@
-﻿<Window x:Class="HRVTrack.MainWindow"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:HRVTrack"
-        mc:Ignorable="d"
-        Title="Okno główne" Height="450" Width="700" Background="#363636">
+﻿<Window
+    x:Class="HRVTrack.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:HRVTrack"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="Okno główne"
+    Width="800"
+    Height="450"
+    Background="#363636"
+    mc:Ignorable="d">
 
     <Window.Resources>
         <Style x:Key="RoundedButtonStyle" TargetType="Button">
-            <Setter Property="Background" Value="Transparent"/>
-            <Setter Property="Foreground" Value="White"/>
-            <Setter Property="FontWeight" Value="Bold"/>
-            <Setter Property="FontFamily" Value="Arial"/>
-            <Setter Property="BorderBrush" Value="Gray"/>
-            <Setter Property="BorderThickness" Value="2"/>
-            <Setter Property="Padding" Value="10"/>
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="FontFamily" Value="Arial" />
+            <Setter Property="BorderBrush" Value="Gray" />
+            <Setter Property="BorderThickness" Value="2" />
+            <Setter Property="Padding" Value="10" />
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="Button">
-                        <Border x:Name="border"
-                                CornerRadius="15"
-                                Background="{TemplateBinding Background}"
-                                BorderBrush="{TemplateBinding BorderBrush}"
-                                BorderThickness="{TemplateBinding BorderThickness}">
-                            <ContentPresenter HorizontalAlignment="Center"
-                                              VerticalAlignment="Center"
-                                              Content="{TemplateBinding Content}"
-                                              TextElement.Foreground="{TemplateBinding Foreground}" />
+                        <Border
+                            x:Name="border"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="15">
+                            <ContentPresenter
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                Content="{TemplateBinding Content}"
+                                TextElement.Foreground="{TemplateBinding Foreground}" />
                         </Border>
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
-                                <Setter TargetName="border" Property="Background" Value="#363636"/>
-                                <Setter Property="Foreground" Value="White"/>
+                                <Setter TargetName="border" Property="Background" Value="#363636" />
+                                <Setter Property="Foreground" Value="White" />
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
@@ -43,30 +49,73 @@
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="0.30*"/>
-            <ColumnDefinition Width="0.70*"/>
+            <ColumnDefinition Width="0.30*" />
+            <ColumnDefinition Width="0.70*" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="2*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="2*"/>
+            <RowDefinition Height="2*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="2*" />
         </Grid.RowDefinitions>
 
-        
-        <Rectangle Grid.Column="0" Grid.RowSpan="20" Fill="#242323"/>
 
-        <!--        Lewa strona         -->
-        <Button x:Name="MainPageButton" Click="MainPageButton_Click" Grid.Row="1" Grid.Column="0" Content="Strona główna" Margin="10" Style="{StaticResource RoundedButtonStyle}"/>
-        <Button x:Name="MeasurmentsPageButton" Click="MeasurmentsPageButton_Click" Grid.Row="2" Grid.Column="0" Content="Pomiary" Margin="10" Style="{StaticResource RoundedButtonStyle}"/>
-        <Button x:Name="StatsPageButton" Click="StatsPageButton_Click" Grid.Row="3" Grid.Column="0" Content="Statystyki" Margin="10" Style="{StaticResource RoundedButtonStyle}"/>
-        <Button x:Name="SettingsPageButton" Click="SettingsPageButton_Click" Grid.Row="4" Grid.Column="0" Content="Ustawienia" Margin="10" Style="{StaticResource RoundedButtonStyle}"/>
-        <Label Content="HRV Track" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" FontSize="32" FontWeight="Bold"/> 
-   
-       <!--         Prawa strona        -->
-        <ContentControl x:Name="MainContent" Grid.Column="1" Grid.RowSpan="6"/>
+        <Rectangle
+            Grid.RowSpan="20"
+            Grid.Column="0"
+            Fill="#242323" />
+
+        <!--  Lewa strona  -->
+        <Button
+            x:Name="MainPageButton"
+            Grid.Row="1"
+            Grid.Column="0"
+            Margin="10"
+            Click="MainPageButton_Click"
+            Content="Strona główna"
+            Style="{StaticResource RoundedButtonStyle}" />
+        <Button
+            x:Name="MeasurmentsPageButton"
+            Grid.Row="2"
+            Grid.Column="0"
+            Margin="10"
+            Click="MeasurmentsPageButton_Click"
+            Content="Pomiary"
+            Style="{StaticResource RoundedButtonStyle}" />
+        <Button
+            x:Name="StatsPageButton"
+            Grid.Row="3"
+            Grid.Column="0"
+            Margin="10"
+            Click="StatsPageButton_Click"
+            Content="Statystyki"
+            Style="{StaticResource RoundedButtonStyle}" />
+        <Button
+            x:Name="SettingsPageButton"
+            Grid.Row="4"
+            Grid.Column="0"
+            Margin="10"
+            Click="SettingsPageButton_Click"
+            Content="Ustawienia"
+            Style="{StaticResource RoundedButtonStyle}" />
+        <Label
+            Grid.Row="0"
+            Grid.Column="0"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Content="HRV Track"
+            FontSize="32"
+            FontWeight="Bold"
+            Foreground="White" />
+
+        <!--  Prawa strona  -->
+        <ContentControl
+            x:Name="MainContent"
+            Grid.RowSpan="6"
+            Grid.Column="1"
+            Margin="1" />
 
     </Grid>
 </Window>
