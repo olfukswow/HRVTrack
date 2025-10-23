@@ -15,7 +15,9 @@ namespace HRVTrack
     {
         public MainWindow()
         {
+
             InitializeComponent();
+            MainContent.Content = new MainPageUserControl();
         }
 
         private void MainPageButton_Click(object sender, RoutedEventArgs e)

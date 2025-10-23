@@ -7,6 +7,52 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+        <Border Width="160" Height="60" 
+        CornerRadius="20" 
+        BorderBrush="White" 
+        BorderThickness="2" 
+        Background="#242323" 
+        VerticalAlignment="Top" 
+        HorizontalAlignment="Left" 
+        Margin="25">
+            <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <Label Content="Ostatnia wartość" Foreground="White" HorizontalAlignment="Center" FontSize="16"/>
+                <Label Content="56ms" Foreground="White" HorizontalAlignment="Center"/>
+                <!-- Binding do dynamicznej wartości -->
+            </StackPanel>
+        </Border>
+
+        <Border Width="160" Height="60" 
+CornerRadius="20" 
+BorderBrush="White" 
+BorderThickness="2" 
+Background="#242323" 
+VerticalAlignment="Top" 
+HorizontalAlignment="Left" 
+Margin="25">
+            <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <Label Content="Najwyższa wartość" Foreground="White" HorizontalAlignment="Center" FontSize="16"/>
+                <Label Content="76ms" Foreground="White" HorizontalAlignment="Center"/>
+                <!-- Binding-->
+            </StackPanel>
+        </Border>
+            <Border Width="160" Height="60" 
+CornerRadius="20" 
+BorderBrush="White" 
+BorderThickness="2" 
+Background="#242323" 
+VerticalAlignment="Top" 
+HorizontalAlignment="Left" 
+Margin="25">
+                <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
+                    <Label Content="Najniższa wartość" Foreground="White" HorizontalAlignment="Center" FontSize="16"/>
+                    <Label Content="52ms" Foreground="White" HorizontalAlignment="Center"/>
+                    <!--Binding-->
+                </StackPanel>
+            </Border>
+        </StackPanel>
+
     </Grid>
 </UserControl>
